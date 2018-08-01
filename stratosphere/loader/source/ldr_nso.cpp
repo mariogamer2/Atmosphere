@@ -41,9 +41,9 @@ FILE *NsoUtils::OpenNso(unsigned int index, u64 title_id) {
     if (title_id == 0x010000000000100D) {
         Result rc;
         rc = hidInitialize();
-        if (R_FAILED(rc))
+        if (R_FAILED(rc)){
             fatalSimple(MAKERESULT(Module_Libnx, LibnxError_InitFail_HID));
-        
+        }
         hidScanInput();
         u64 kDown = hidKeysDown(CONTROLLER_P1_AUTO);
         if(kDown & KEY_R) {
